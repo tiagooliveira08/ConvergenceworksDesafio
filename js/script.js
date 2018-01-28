@@ -20,6 +20,7 @@
     var $humidity = doc.querySelector("[data-js='humidity']");
     var $wind = doc.querySelector("[data-js='wind']");
     var $errorMessage = doc.querySelector("[data-js='errorMessage']");
+    var $status = doc.querySelector("[data-js='status']");
     //variaveis tips
     var $tipMain = doc.querySelector("[data-js='tipMain']");
     var $prevImg1 = doc.querySelector("[data-js='prevImg1']");
@@ -50,6 +51,7 @@
     $close.addEventListener("click",function(e){
         doc.querySelector(".background").removeChild($blockRight);
         doc.querySelector(".background").removeChild($tipMain);
+        $status.src = "img/down.png";
     },false)
     //Fim eventos click
 
@@ -58,6 +60,14 @@
        $.get(`${linkReq}/api/v1/locale/city?name=${$textSearch.value}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
             if(data.length === 0){//verificando a requisição detorna uma array vazio, caso seja vazio a cidade não foi encontrada.
                 $errorMessage.textContent = "Cidade desconhecida"
+                $status.src = "img/error.png";
+                if(doc.querySelectorAll("[data-js='blockRight']").length === 1){
+                    //remove os elementos de informações caso haja erro ao pesquisar nova cidade
+                    //porem antes tem que ser verificado se ja foi pesquisado!!, então usei o querySelectorAll
+                    //para verificar se elemento existe no DOM
+                    doc.querySelector(".background").removeChild($blockRight);
+                    doc.querySelector(".background").removeChild($tipMain);
+                }
                 return
             }
             let idCity = data[0].id; 
@@ -74,9 +84,10 @@
                 $humidity.textContent = `${data.data.humidity}%`
                 $wind.textContent = `${data.data.wind_velocity} km/h`
                 $errorMessage.textContent = "";
+                $status.src = "img/sucess.png";
                 $blockRight.style.display = "block";
-                //populei os dados nos elementos e defini o display block para aparecer na tela.
 
+                //populei os dados nos elementos e defini o display block para aparecer na tela.
                 $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,(data) =>{
                     //populando os dados da requisição tips
                     $prevImg1.src = `img/realistic/70px/${data.data[0].text_icon.icon.day}.png`;

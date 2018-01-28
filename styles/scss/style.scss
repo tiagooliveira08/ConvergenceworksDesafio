@@ -1,5 +1,4 @@
     @import "button";
-    @import "loader";
 
     //Inicio variaveis
     $tamanho-prev: 300px;
@@ -37,13 +36,16 @@ body,html{
     width: 10%;
     height: 30px;
     max-width: 80px;
-
 }
+
 .ml-10{
     margin-left: 10px;
 }
 .mt-10{
     margin-top: 10px;
+}
+.pd10{
+    padding: 10px;
 }
 .bolder{
     font-weight: bold;
@@ -97,7 +99,8 @@ img{
     
     .block-left{
         width: 40%;
-        height: $tamanho-prev;
+        min-height: $tamanho-prev;
+        height: auto;
         background-color: rgba(255, 255, 255, 1);
         border-bottom: 1px solid #ccc;
         border-left: 1px solid rgba(0, 0, 0, .1);
@@ -106,6 +109,7 @@ img{
         box-shadow: $card-shadow;
         transition: $card-transition;
         margin-top: 60px;
+        padding: 10px;
 
         .error-message{
             color:rgb(223, 127, 107);
@@ -120,7 +124,10 @@ img{
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100px;
+            flex-direction: column;
+            flex-wrap: wrap;
+            
+            height: auto;
 
                 .prev-temp{
                     color: $text-color-black-op;
@@ -155,7 +162,9 @@ img{
         border-radius: 5px;
         box-shadow: $card-shadow;
         transition: $card-transition;
-         display: block;
+
+        transition: opacity 1s ease;
+        display: none;
         
         .block-right-top{
 
