@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ConvergenceWorks Desafio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+</head>
+<body>
+        <nav class="navbar">
+                <h1 class="logo">convergenceworks</h1>
+        </nav>
+    <article class="background">
+        
+        <section class="block-left">
+            <div class="block-left-top">
+                <span class="prev-temp">API - Previsão do tempo</span>
+            </div>
+            <div class="block-left-bottom">
+                <input type"text" class="text-search" data-js="textSearch" placeholder="Nome da cidade"/>
+                <button class="button" data-js="btnSearch"><span>Pesquisar</span></button>
+            </div>
+            <p class="error-message text-center" data-js="errorMessage"></p>
+        </section>
+        <section class="block-right" data-js="blockRight"><div class="spinner"></div> 
+            <span class="close" data-js="close">Fechar</span>
+            <div class="block-right-top">
+                <h2 class="prev-locate" data-js="locate"></h2>
+                <div class="flex-inline"> 
+                    <div class="img-responsive">
+                        <img alt="tempo no momento" data-js="imgTemp">
+                    </div>
+                    
+                    <div class="flex-column">
+                            <h3 class="prev-c" data-js="tempC"></h3>
+                            <span class="description" data-js="description"></span>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="flex-row mt30">
+                <div class="flex-column">
+                    <span>Sensação</span>
+                    <span class="text-center" data-js="sensation"></span>
+                </div>
+                <div class="flex-column">
+                    <span>Humidade</span>
+                    <span class="text-center" data-js="humidity"></span>
+                </div>
+                <div class="flex-column">
+                    <span>Vento</span>
+                    <span class="text-center" data-js="wind"></span>
+                </div>
+                
+            </div>
+        </section>
+        <section class="tip" data-js="tipMain">
+                <div class="tips" data-js="tip1">
+                    <div class="img-responsive">
+                        <img src="img/realistic/70px/5.png" class="img-today" data-js="prevImg1"/>
+                    </div>
+                    <div class="flex-column">
+                        <span class="day-today bolder">Hoje</span>
+                        <span class="max"><div class="arrow-reponsive d-block"><img src="img/myArrow.png" alt="seta para cima" /></div><span data-js="prevCMax1">Max: 26º</span></span>
+                        <span class="max mt-10"><div class="arrow-reponsive d-block"><img src="img/myArrow2.png" alt="seta para baixo" /></div><span data-js="prevCMin1">min: 26º</span></span>
+                    </div>
+                    <span class="description-prev" data-js="descriptionPrevision1">Um pouco de chuva mas sol na maior parte do tempo.</span>
+                </div>
+                <div class="tips" data-js="tip1">
+                    <div class="img-responsive">
+                        <img src="img/realistic/70px/4r.png" class="img-today" data-js="prevImg2"/>
+                    </div>
+                    <div class="flex-column">
+                        <span class="day-today bolder">Amanhã</span>
+                        <span class="max"><div class="arrow-reponsive d-block"><img src="img/myArrow.png" alt="seta para cima" /></div><span data-js="prevCMax2">Max: 26º</span></span>
+                        <span class="max mt-10"><div class="arrow-reponsive d-block"><img src="img/myArrow2.png" alt="seta para baixo" /></div><span data-js="prevCMin2">Min: 26º</span></span>
+                    </div>
+                    <span class="description-prev" data-js="descriptionPrevision2">Um pouco de chuva mas sol na maior parte do tempo.</span>
+                </div>
+                <div class="tips" data-js="tip1">
+                    <div class="img-responsive">
+                        <img src="img/realistic/70px/1.png"  class="img-today" data-js="prevImg3"/>
+                    </div>
+                    <div class="flex-column">
+                        <span class="day-today bolder" data-js="dayLast">25/01/2012</span>
+                        <span class="max"><div class="arrow-reponsive d-block"><img src="img/myArrow.png" alt="seta para cima" /></div><span data-js="prevCMax3">Max: 26º</span></span>
+                        <span class="max mt-10"><div class="arrow-reponsive d-block"><img src="img/myArrow2.png" alt="seta para baixo" /></div><span data-js="prevCMin3">Min: 26º</span></span>
+                    </div>
+                    <span class="description-prev" data-js="descriptionPrevision3">Um pouco de chuva mas sol na maior parte do tempo.</span>
+                </div>
+        </section>
+        
+    </article>
+    
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/script.js"></script>
+</html>

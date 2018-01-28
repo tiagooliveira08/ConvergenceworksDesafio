@@ -1,0 +1,280 @@
+.button {
+  background-color: white;
+  border: none;
+  color: #535459;
+  text-align: center;
+  font-size: 16px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 20px !important;
+  border: 1px solid #ccc; }
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s; }
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  z-index: 1; }
+
+.button:hover span {
+  padding-right: 25px; }
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0; }
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #f25a41;
+  border-radius: 100%;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  animation: spin 1s infinite linear; }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+body, html {
+  height: 100%;
+  width: 100%; }
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box; }
+
+.img-responsive {
+  width: 30%;
+  max-width: 100px;
+  height: 70px; }
+
+.d-block {
+  display: inline-block; }
+
+.arrow-reponsive {
+  width: 10%;
+  height: 30px;
+  max-width: 80px; }
+
+.ml-10 {
+  margin-left: 10px; }
+
+.mt-10 {
+  margin-top: 10px; }
+
+.bolder {
+  font-weight: bold; }
+
+img {
+  width: 100%;
+  height: auto; }
+
+.flex-column {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column; }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+.mt30 {
+  margin-top: 30px; }
+
+.text-center {
+  text-align: center; }
+
+.navbar {
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  background-color: #0181CC;
+  box-shadow: 0 10px 6px -10px #ccc;
+  border-bottom: 1px solid rgba(104, 92, 92, 0.171);
+  z-index: 999; }
+  .navbar .logo {
+    margin: 20px 0px 0px 20px;
+    color: white; }
+
+.background {
+  min-height: 100%;
+  width: 100%;
+  background: #F7F7F7;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+  .background .block-left {
+    width: 40%;
+    height: 300px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 10px 6px -10px #777;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-top: 60px; }
+    .background .block-left .error-message {
+      color: #df7f6b;
+      margin-top: 10px; }
+    .background .block-left:hover {
+      cursor: pointer; }
+    .background .block-left .block-left-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px; }
+      .background .block-left .block-left-top .prev-temp {
+        color: #535459;
+        font-weight: bold;
+        font-size: 18px; }
+    .background .block-left .block-left-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+      height: 150px; }
+      .background .block-left .block-left-bottom .text-search {
+        padding: 15px;
+        font-size: 16px;
+        color: #535459; }
+  .background .block-right {
+    margin-left: 20px;
+    width: 30%;
+    height: auto;
+    padding: 15px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 10px 6px -10px #777;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: block; }
+    .background .block-right .block-right-top .flex-inline {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center; }
+      .background .block-right .block-right-top .flex-inline .description {
+        color: #535459;
+        font-weight: bold; }
+      .background .block-right .block-right-top .flex-inline .prev-c {
+        font-size: 40px;
+        color: #535459;
+        font-weight: bold; }
+    .background .block-right .prev-locate {
+      color: #4990C7; }
+    .background .block-right .prev-date {
+      color: #8B8987;
+      margin-top: 10px; }
+    .background .block-right .prev-condition {
+      color: #8B8987;
+      margin-top: 5px; }
+  .background .tip {
+    width: 100%;
+    height: auto;
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap; }
+    .background .tip .tips {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 30%;
+      height: auto;
+      min-height: 150px;
+      background-color: white;
+      border-bottom: 1px solid #ccc;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-shadow: 0 10px 6px -10px #777;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+      .background .tip .tips .img-today {
+        display: inline-block; }
+      .background .tip .tips .max {
+        display: flex;
+        justify-content: space-around; }
+      .background .tip .tips .day-today {
+        color: #4990C7;
+        margin-bottom: 10px; }
+      .background .tip .tips .description-prev {
+        margin-top: 10px;
+        text-align: center;
+        padding: 10px;
+        color: #535459;
+        font-size: 12px; }
+
+@media (max-width: 1018px) {
+  .background .block-right {
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-bottom: 50px; }
+
+  .background .block-left {
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px; } }
+@media (max-width: 700px) {
+  .tips {
+    width: 40%; } }
+@media (max-width: 500px) {
+  .background .block-left {
+    width: 70%; }
+
+  .text-search {
+    margin-right: 0 !important; }
+
+  .tips {
+    width: 60% !important;
+    margin-top: 40px; } }
+@media (max-width: 350px) {
+  .background .block-left {
+    width: 98%; }
+
+  .background .block-right {
+    width: 98%; }
+
+  .tips {
+    width: 80% !important;
+    margin-top: 40px; }
+
+  .tips:last-child {
+    margin-bottom: 20px; } }
+.close {
+  cursor: pointer;
+  float: right;
+  color: #535459; }
+
+/*# sourceMappingURL=style.css.map */
