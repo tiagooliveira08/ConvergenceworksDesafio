@@ -36,7 +36,7 @@
     var $descritionPrev1 = doc.querySelector("[data-js='descriptionPrevision1']");
     var $descritionPrev2 = doc.querySelector("[data-js='descriptionPrevision2']");
     var $descritionPrev3 = doc.querySelector("[data-js='descriptionPrevision3']");
-    var linkReq  = "http://apiadvisor.climatempo.com.br";
+    var linkReq  = "https://apiadvisor.climatempo.com.br";
     
     //Inicio eventos click
     $btn.addEventListener("click",execAjax,false);
