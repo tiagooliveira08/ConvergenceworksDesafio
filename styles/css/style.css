@@ -59,8 +59,11 @@ body, html {
 .ml-10 {
   margin-left: 10px; }
 
-.mt-10 {
+.mt10 {
   margin-top: 10px; }
+
+.mt-10 {
+  margin-bottom: -10px; }
 
 .pd10 {
   padding: 10px; }
@@ -87,6 +90,14 @@ img {
 
 .text-center {
   text-align: center; }
+
+.description-prev {
+  text-align: center;
+  color: #535459;
+  font-size: 12px; }
+
+.fr {
+  float: right; }
 
 .navbar {
   height: 70px;
@@ -214,12 +225,6 @@ img {
       .background .tip .tips .day-today {
         color: #4990C7;
         margin-bottom: 10px; }
-      .background .tip .tips .description-prev {
-        margin-top: 10px;
-        text-align: center;
-        padding: 10px;
-        color: #535459;
-        font-size: 12px; }
 
 @media (max-width: 1018px) {
   .background .block-right {

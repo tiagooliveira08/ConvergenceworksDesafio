@@ -41,8 +41,11 @@ body,html{
 .ml-10{
     margin-left: 10px;
 }
-.mt-10{
+.mt10{
     margin-top: 10px;
+}
+.mt-10{
+    margin-bottom: -10px;
 }
 .pd10{
     padding: 10px;
@@ -69,6 +72,14 @@ img{
 }
 .text-center{
     text-align: center;
+}
+.description-prev{
+    text-align: center;
+    color:#535459;
+    font-size: 12px;
+}
+.fr{
+    float: right;
 }
     //Fim Classes
 
@@ -236,13 +247,7 @@ img{
                     color: $blue-text;
                     margin-bottom: 10px;
                 }
-                .description-prev{
-                    margin-top: 10px;
-                    text-align: center;
-                    padding: 10px;
-                    color:#535459;
-                    font-size: 12px;
-                }
+                
         }
 
     }
