@@ -10,23 +10,23 @@
 </head>
 <body>
         <nav class="navbar">
-                <h1 class="logo">convergenceworks</h1>
+                <h1 class="logo">ConvergenceWorks</h1>
         </nav>
     <article class="background">
         
         <section class="block-left">
             <div class="block-left-top">
                 <span class="prev-temp text-center">Olá, gostaria de saber como está o tempo em sua cidade?</span>
-                <p><div class="arrow-responsive"><img src="img/down.png" / class="pd10 arrow" data-js="status"></div></p>
+                <p><div class="arrow-responsive"><img src="img/down.png" alt="seta para baixo" class="pd10 arrow" data-js="status"></div></p>
             </div>
             <div class="block-left-bottom">
-                <input type"text" class="text-search" data-js="textSearch" placeholder="Nome da cidade"/>
-                <button class="button" data-js="btnSearch"><span>Pesquisar</span></button>
+                <input type="text" class="text-search" data-js="textSearch" placeholder="Nome da cidade" tabindex="1"/>
+                <button class="button" data-js="btnSearch" tabindex="2"><span>Pesquisar</span></button>
             </div>
             <p class="error-message text-center" data-js="errorMessage"></p>
         </section>
         <section class="block-right" data-js="blockRight">
-            <span class="close" data-js="close">Fechar</span>
+            <span class="close" data-js="close" tabindex="3">Fechar</span>
             <div class="block-right-top">
                 <h2 class="prev-locate" data-js="locate"></h2>
                 <div class="flex-inline"> 
@@ -34,7 +34,7 @@
                         <img alt="tempo no momento" data-js="imgTemp">
                     </div>
                     
-                    <div class="flex-column">
+                    <div class="flex-column ml20">
                             <h3 class="prev-c" data-js="tempC"></h3>
                             <span class="description" data-js="description"></span>
                     </div>
@@ -43,15 +43,15 @@
                 
             </div>
             <div class="flex-row mt30">
-                <div class="flex-column">
+                <div class="flex-column ml20">
                     <span>Sensação</span>
                     <span class="text-center" data-js="sensation"></span>
                 </div>
-                <div class="flex-column">
+                <div class="flex-column ml20">
                     <span>umidade</span>
                     <span class="text-center" data-js="humidity"></span>
                 </div>
-                <div class="flex-column">
+                <div class="flex-column ml20">
                     <span>Vento</span>
                     <span class="text-center" data-js="wind"></span>
                 </div>

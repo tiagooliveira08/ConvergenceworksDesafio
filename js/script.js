@@ -58,11 +58,11 @@
     //Buscando ID da cidade de acordo com o nome
     function execAjax(){
        $.get(`${linkReq}/api/v1/locale/city?name=${$textSearch.value}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
-            if(data.length === 0){//verificando a requisição detorna uma array vazio, caso seja vazio a cidade não foi encontrada.
-                $errorMessage.textContent = `Cidade ${$textSearch.value} Não existe.`
+            if(data.length === 0){//verificando a requisição retorna um array vazio, caso seja vazio a cidade não foi encontrada.
+                $errorMessage.textContent = `Cidade ${$textSearch.value} não existe.`
                 $status.src = "img/error.png";
                 if(doc.querySelectorAll("[data-js='blockRight']").length === 1){
-                    //remove os elementos de informações caso haja erro ao pesquisar nova cidade
+                    //remove os elementos de informações caso haja erro ao pesquisar nova cidade, apos a primeira pesquisa
                     //porem antes tem que ser verificado se ja foi pesquisado!!, então usei o querySelectorAll
                     //para verificar se elemento existe no DOM
                     doc.querySelector(".background").removeChild($blockRight);
@@ -78,7 +78,6 @@
                 $city.textContent =`${data.name} - ${data.state}` 
                 $description.textContent = data.data.condition;
                 $imgTemp.src = `img/realistic/70px/${data.data.icon}.png`
-                console.log(data)
                 $tempC.textContent = `${data.data.temperature}º`
                 $sensation.textContent = `${data.data.sensation}º`
                 $sensation.textContent = `${data.data.sensation}º`

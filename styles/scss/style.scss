@@ -1,5 +1,5 @@
     @import "button";
-
+    @import "classes";
     //Inicio variaveis
     $tamanho-prev: 300px;
     $color-prev: #8B8987;
@@ -23,65 +23,6 @@ body,html{
 }
     //Fim presets
 
-    //Inicio classes
-.img-responsive{
-    width: 30%;
-    max-width: 100px;
-    height: 70px;
-}
-.d-block{
-    display: inline-block;
-}
-.arrow-reponsive{
-    width: 10%;
-    height: 30px;
-    max-width: 80px;
-}
-
-.ml-10{
-    margin-left: 10px;
-}
-.mt10{
-    margin-top: 10px;
-}
-.mt-10{
-    margin-bottom: -10px;
-}
-.pd10{
-    padding: 10px;
-}
-.bolder{
-    font-weight: bold;
-}
-img{
-    width: 100%;
-    height: auto;
-}
-.flex-column{
-    margin-left: 20px;
-    display: flex;
-    flex-direction:column;
-}
-.flex-row{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-.mt30{
-    margin-top: 30px;
-}
-.text-center{
-    text-align: center;
-}
-.description-prev{
-    text-align: center;
-    color:#535459;
-    font-size: 12px;
-}
-.fr{
-    float: right;
-}
-    //Fim Classes
 
 .navbar{
     height: 70px;
@@ -219,6 +160,7 @@ img{
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: wrap;
+        margin-bottom: 10px;
     
         .tips{  
                 display: flex;
@@ -271,11 +213,15 @@ img{
     justify-content: center;
     margin-top: 150px;
   }
-
 }
+
 @media (max-width: 700px){
     .tips{
-        width: 40%;
+        width: 40% !important;
+    }
+    .tips:last-child{
+        margin-top: 40px;
+        margin-bottom: 10px;
     }
 }
 
@@ -292,7 +238,7 @@ img{
     }
 }
 
-@media (max-width: 350px){
+@media (max-width: 380px){
     .background .block-left{
         width: 98%;
     }
@@ -314,6 +260,10 @@ img{
     cursor: pointer;
     float: right;
     color:#535459;
+}
+img{
+    width: 100%;
+    height: auto;
 }
 
 

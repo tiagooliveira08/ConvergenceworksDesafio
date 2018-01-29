@@ -1,0 +1,58 @@
+
+    //Inicio classes
+.img-responsive{
+    width: 30%;
+    max-width: 100px;
+    height: 70px;
+}
+.d-block{
+    display: inline-block;
+}
+.arrow-reponsive{
+    width: 10%;
+    height: 30px;
+    max-width: 80px;
+}
+
+.ml10{
+    margin-left: 10px;
+}
+.ml20{
+    margin-left: 20px;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mt-10{
+    margin-bottom: -10px;
+}
+.pd10{
+    padding: 10px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.bolder{
+    font-weight: bold;
+}
+.flex-column{
+    display: flex;
+    flex-direction:column;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.text-center{
+    text-align: center;
+}
+.description-prev{
+    text-align: center;
+    color:#535459;
+    font-size: 12px;
+}
+.fr{
+    float: right;
+}
+    //Fim Classes
