@@ -86,6 +86,7 @@
                 $errorMessage.textContent = "";
                 $status.src = "img/sucess.png";
                 $blockRight.style.display = "block";
+                $textSearch.value = "";
 
                 //populei os dados nos elementos e defini o display block para aparecer na tela.
                 $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,(data) =>{
