@@ -48,33 +48,64 @@
         }
     });
 
+
+
     $close.addEventListener("click",function(e){
         doc.querySelector(".background").removeChild($blockRight);
         doc.querySelector(".background").removeChild($tipMain);
         $status.src = "img/down.png";
+        showFavorite();
     },false)
     //Fim eventos click
+
+    function showFavorite(){
+        $("[data-js='favorite']").fadeIn(1000);
+    }
+    function hideFavorite(){
+        $("[data-js='favorite']").fadeOut(1000);
+    }
     
-    function verModal(){
+    function checkModal(){
         if(doc.querySelectorAll("[data-js='blockRight']").length === 1){
             doc.querySelector(".background").removeChild($blockRight);
             doc.querySelector(".background").removeChild($tipMain);
+            showFavorite();
         }
     }
+    function loadEnd(){
+        $(".loader--loading").fadeOut("slow",function(){
+            $(".button").fadeIn("fast");
+        });
+    }
 
-    function execAjax(){
-        verModal();
-       $.get(`${linkReq}/api/v1/locale/city?name=${$textSearch.value}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
-            if(data.length === 0){//verificando a requisição retorna um array vazio, caso seja vazio a cidade não foi encontrada.
+    function errorSearch(data){
+            if(data.length === 0){
                 $errorMessage.textContent = `Cidade ${$textSearch.value} não existe.`
                 $status.src = "img/error.png";
-                verModal();
+                loadEnd();
+                checkModal();
+                return true;
+            }
+        return
+    }
+
+
+    function execAjax(){
+        //carregar
+        checkModal();
+        $(".button").fadeOut(1,function(){
+            $(".loader--loading").fadeIn("fast");
+        });
+        hideFavorite();
+
+       $.get(`${linkReq}/api/v1/locale/city?name=${$textSearch.value}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
+            if(errorSearch(data)){
                 return
             }
             let idCity = data[0].id; 
             $.get(`${linkReq}/api/v1/weather/locale/${idCity}/current?token=1db6b6239f44145c4ae69aac35b437a6`,(data)=>{
                 doc.querySelector(".background").appendChild($blockRight);
-                $city.textContent =`${data.name} - ${data.state}` 
+                $city.textContent = `${data.name} - ${data.state}` 
                 $description.textContent = data.data.condition;
                 $imgTemp.src = `img/realistic/70px/${data.data.icon}.png`
                 $tempC.textContent = `${data.data.temperature}º`
@@ -103,6 +134,8 @@
                     $descritionPrev3.textContent = `${data.data[2].text_icon.text.phrase.reduced}`
                     $tipMain.style.display = "flex";
                     doc.querySelector(".background").appendChild($tipMain);
+                }).always(function(){
+                    loadEnd();
                 })
             }
             )

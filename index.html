@@ -11,6 +11,24 @@
         <nav class="navbar">
                 <h1 class="logo">ConvergenceWorks</h1>
         </nav>
+        <div>
+                <img src="img/chuva.png" alt="chuva" class="background--chuva"/>
+        </div>
+        <div  class="background--responsive">
+            <img src="img/sun.png" alt="sun" class="background--sun"/>
+        </div>
+        <div class="background--infoDiv" data-js="favorite">
+                <div class="background--image"><img src="img/realistic/70px/6.png" /></div>
+                <div> 
+                    <span class="background--city">Salvador</span>
+                    <div class="flex-row flex-row-center">
+                            <span class="background--cMax">19º</span><span class="background--cMix">10º</span>
+                    </div>
+                </div>
+            </div>
+    
+            
+
     <article class="background">
         
         <section class="block-left">
@@ -21,13 +39,24 @@
             <div class="block-left-bottom">
                 <input type="text" class="text-search" data-js="textSearch" placeholder="Nome da cidade" tabindex="1"/>
                 <button class="button" data-js="btnSearch" tabindex="2"><span>Pesquisar</span></button>
+                <div class="loader--loading">
+                </div>
             </div>
             <p class="error-message text-center" data-js="errorMessage"></p>
         </section>
         <section class="block-right" data-js="blockRight">
-            <span class="close" data-js="close" tabindex="3">Fechar</span>
+            <span class="close" data-js="close" tabindex="3">X</span>
             <div class="block-right-top">
-                <h2 class="prev-locate" data-js="locate"></h2>
+                <div class="flex-row">
+                    <h2 class="prev-locate" data-js="locate">
+                    </h2>
+                    <div>
+                        <span class="block-right--tw-heart-box">
+                            <input type="checkbox" name="name" value="">
+                            <span class="block-right--tw-heart"></span>
+                        </span>
+                    </div>
+                </div>
                 <div class="flex-inline"> 
                     <div class="img-responsive">
                         <img alt="tempo no momento" data-js="imgTemp">
@@ -41,7 +70,7 @@
                 </div>
                 
             </div>
-            <div class="flex-row mt30">
+            <div class="flex-row flex-row-center mt30">
                 <div class="flex-column ml20">
                     <span>Sensação</span>
                     <span class="text-center" data-js="sensation"></span>
