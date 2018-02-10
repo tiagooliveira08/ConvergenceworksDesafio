@@ -54,26 +54,25 @@
         $status.src = "img/down.png";
     },false)
     //Fim eventos click
+    
+    function verModal(){
+        if(doc.querySelectorAll("[data-js='blockRight']").length === 1){
+            doc.querySelector(".background").removeChild($blockRight);
+            doc.querySelector(".background").removeChild($tipMain);
+        }
+    }
 
-    //Buscando ID da cidade de acordo com o nome
     function execAjax(){
+        verModal();
        $.get(`${linkReq}/api/v1/locale/city?name=${$textSearch.value}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
             if(data.length === 0){//verificando a requisição retorna um array vazio, caso seja vazio a cidade não foi encontrada.
                 $errorMessage.textContent = `Cidade ${$textSearch.value} não existe.`
                 $status.src = "img/error.png";
-                if(doc.querySelectorAll("[data-js='blockRight']").length === 1){
-                    //remove os elementos de informações caso haja erro ao pesquisar nova cidade, apos a primeira pesquisa
-                    //porem antes tem que ser verificado se ja foi pesquisado!!, então usei o querySelectorAll
-                    //para verificar se elemento existe no DOM
-                    doc.querySelector(".background").removeChild($blockRight);
-                    doc.querySelector(".background").removeChild($tipMain);
-                }
+                verModal();
                 return
             }
             let idCity = data[0].id; 
-            //primeiro faço o get para pegar o id da cidade de acordo com o nome, e aloco em uma variavel local idCity
             $.get(`${linkReq}/api/v1/weather/locale/${idCity}/current?token=1db6b6239f44145c4ae69aac35b437a6`,(data)=>{
-                //faço a requisicao via ID, pois a api não aceita pesquisar a previsao do tempo diretamento por nome da cidade.
                 doc.querySelector(".background").appendChild($blockRight);
                 $city.textContent =`${data.name} - ${data.state}` 
                 $description.textContent = data.data.condition;
@@ -88,9 +87,7 @@
                 $blockRight.style.display = "block";
                 $textSearch.value = "";
 
-                //populei os dados nos elementos e defini o display block para aparecer na tela.
                 $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,(data) =>{
-                    //populando os dados da requisição tips
                     $prevImg1.src = `img/realistic/70px/${data.data[0].text_icon.icon.day}.png`;
                     $prevImg2.src = `img/realistic/70px/${data.data[1].text_icon.icon.day}.png`;
                     $prevImg3.src = `img/realistic/70px/${data.data[2].text_icon.icon.day}.png`;
@@ -105,7 +102,6 @@
                     $descritionPrev2.textContent = `${data.data[1].text_icon.text.phrase.reduced}`
                     $descritionPrev3.textContent = `${data.data[2].text_icon.text.phrase.reduced}`
                     $tipMain.style.display = "flex";
-                    //definindo display flex para aparecer na tela.
                     doc.querySelector(".background").appendChild($tipMain);
                 })
             }
