@@ -1,9 +1,4 @@
 
-    //Algumas observações:
-    //Bom decidi fazer em javascript puro pois é o que realmente domino, poderia fazer em jQuery também,
-    //porem acredito que meu conhecimento em puro javascript ainda é mais predominante.
-    //usei apenas o metodo get do jquery devido a praticidade de fazer requisições.
-
 //Adicionando escopo local!!
 (function(doc){
 
@@ -39,16 +34,14 @@
     var linkReq  = "https://apiadvisor.climatempo.com.br";
     
     //Inicio eventos click
-    $btn.addEventListener("click",execAjax,false);
+    $btn.addEventListener("click",execReq,false);
 
     $textSearch.addEventListener("keydown",(e)=>{
         let enter = 13;
         if(e.which == enter){
-            execAjax();
+            execReq();
         }
     });
-
-
 
     $close.addEventListener("click",function(e){
         doc.querySelector(".background").removeChild($blockRight);
@@ -58,20 +51,28 @@
     },false)
     //Fim eventos click
 
+    //funções
     function showFavorite(){
         $("[data-js='favorite']").fadeIn(1000);
     }
+
     function hideFavorite(){
         $("[data-js='favorite']").fadeOut(1000);
     }
     
-    function checkModal(){
+    function checkRight(){
         if(doc.querySelectorAll("[data-js='blockRight']").length === 1){
             doc.querySelector(".background").removeChild($blockRight);
             doc.querySelector(".background").removeChild($tipMain);
             showFavorite();
         }
     }
+    function loadStart(){
+        $(".button").fadeOut(1,function(){
+            $(".loader--loading").fadeIn("fast");
+        });
+    }
+
     function loadEnd(){
         $(".loader--loading").fadeOut("slow",function(){
             $(".button").fadeIn("fast");
@@ -83,63 +84,68 @@
                 $errorMessage.textContent = `Cidade ${$textSearch.value} não existe.`
                 $status.src = "img/error.png";
                 loadEnd();
-                checkModal();
+                checkRight();
                 return true;
             }
         return
     }
+    function writeRight(data){
+        doc.querySelector(".background").appendChild($blockRight);
+        $city.textContent = `${data.name} - ${data.state}` 
+        $description.textContent = data.data.condition;
+        $imgTemp.src = `img/realistic/70px/${data.data.icon}.png`
+        $tempC.textContent = `${data.data.temperature}º`
+        $sensation.textContent = `${data.data.sensation}º`
+        $sensation.textContent = `${data.data.sensation}º`
+        $humidity.textContent = `${data.data.humidity}%`
+        $wind.textContent = `${data.data.wind_velocity} km/h`
+        $errorMessage.textContent = "";
+        $status.src = "img/sucess.png";
+        $blockRight.style.display = "block";
+        $textSearch.value = "";
+    }
+
+    function writeTips(data){
+        $prevImg1.src = `img/realistic/70px/${data.data[0].text_icon.icon.day}.png`;
+        $prevImg2.src = `img/realistic/70px/${data.data[1].text_icon.icon.day}.png`;
+        $prevImg3.src = `img/realistic/70px/${data.data[2].text_icon.icon.day}.png`;
+        $prevCMax1.textContent = `Max: ${data.data[0].temperature.max}º`
+        $prevCMax2.textContent = `Max: ${data.data[1].temperature.max}º`
+        $prevCMax3.textContent = `Max: ${data.data[2].temperature.max}º`
+        $prevCMin1.textContent = `Min: ${data.data[0].temperature.min}º`
+        $prevCMin2.textContent = `Min: ${data.data[1].temperature.min}º`
+        $prevCMin3.textContent = `Min: ${data.data[2].temperature.min}º`
+        $dayLast.textContent = `${data.data[2].date_br}`
+        $descritionPrev1.textContent = `${data.data[0].text_icon.text.phrase.reduced}`
+        $descritionPrev2.textContent = `${data.data[1].text_icon.text.phrase.reduced}`
+        $descritionPrev3.textContent = `${data.data[2].text_icon.text.phrase.reduced}`
+        $tipMain.style.display = "flex";
+        doc.querySelector(".background").appendChild($tipMain);
+    }
+    //fim funções
 
 
-    function execAjax(){
-        //carregar
-        checkModal();
-        $(".button").fadeOut(1,function(){
-            $(".loader--loading").fadeIn("fast");
-        });
+    function execReq(){
+
+        checkRight();
         hideFavorite();
+        loadStart();
 
        $.get(`${linkReq}/api/v1/locale/city?name=${$textSearch.value}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
-            if(errorSearch(data)){
+            if(errorSearch(data))
                 return
-            }
-            let idCity = data[0].id; 
-            $.get(`${linkReq}/api/v1/weather/locale/${idCity}/current?token=1db6b6239f44145c4ae69aac35b437a6`,(data)=>{
-                doc.querySelector(".background").appendChild($blockRight);
-                $city.textContent = `${data.name} - ${data.state}` 
-                $description.textContent = data.data.condition;
-                $imgTemp.src = `img/realistic/70px/${data.data.icon}.png`
-                $tempC.textContent = `${data.data.temperature}º`
-                $sensation.textContent = `${data.data.sensation}º`
-                $sensation.textContent = `${data.data.sensation}º`
-                $humidity.textContent = `${data.data.humidity}%`
-                $wind.textContent = `${data.data.wind_velocity} km/h`
-                $errorMessage.textContent = "";
-                $status.src = "img/sucess.png";
-                $blockRight.style.display = "block";
-                $textSearch.value = "";
 
-                $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,(data) =>{
-                    $prevImg1.src = `img/realistic/70px/${data.data[0].text_icon.icon.day}.png`;
-                    $prevImg2.src = `img/realistic/70px/${data.data[1].text_icon.icon.day}.png`;
-                    $prevImg3.src = `img/realistic/70px/${data.data[2].text_icon.icon.day}.png`;
-                    $prevCMax1.textContent = `Max: ${data.data[0].temperature.max}º`
-                    $prevCMax2.textContent = `Max: ${data.data[1].temperature.max}º`
-                    $prevCMax3.textContent = `Max: ${data.data[2].temperature.max}º`
-                    $prevCMin1.textContent = `Min: ${data.data[0].temperature.min}º`
-                    $prevCMin2.textContent = `Min: ${data.data[1].temperature.min}º`
-                    $prevCMin3.textContent = `Min: ${data.data[2].temperature.min}º`
-                    $dayLast.textContent = `${data.data[2].date_br}`
-                    $descritionPrev1.textContent = `${data.data[0].text_icon.text.phrase.reduced}`
-                    $descritionPrev2.textContent = `${data.data[1].text_icon.text.phrase.reduced}`
-                    $descritionPrev3.textContent = `${data.data[2].text_icon.text.phrase.reduced}`
-                    $tipMain.style.display = "flex";
-                    doc.querySelector(".background").appendChild($tipMain);
-                }).always(function(){
-                    loadEnd();
-                })
-            }
-            )
-       })
+            let idCity = data[0].id; 
+                $.get(`${linkReq}/api/v1/weather/locale/${idCity}/current?token=1db6b6239f44145c4ae69aac35b437a6`,(data)=>{
+                    writeRight(data);
+                        $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,(data) =>{
+                            writeTips(data);
+                        })  
+                        .always(() => loadEnd())
+                        .fail(() => $errorMessage.textContent = `Servidor Offline` )
+                    }
+                )
+            })
     }
 
 })(document)
