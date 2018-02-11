@@ -32,6 +32,18 @@
     var $descritionPrev2 = doc.querySelector("[data-js='descriptionPrevision2']");
     var $descritionPrev3 = doc.querySelector("[data-js='descriptionPrevision3']");
     var linkReq  = "https://apiadvisor.climatempo.com.br";
+
+    var favoriteDisplay = document.querySelector("[data-js='favorite']");
+    var $imgFavorite  = document.querySelector("[data-js='imageFavorite']");
+    var $cityFavorite  = document.querySelector("[data-js='cityFavorite']");
+    var $temperatureFavorite = document.querySelector("[data-js='temperatureFavorite']");
+    var $checkFavorite = doc.querySelector("[data-js='checkFavorite']");
+
+    var idFavorited;
+    var IdlastFavorite;
+    var imgFavorite;
+    var cityFavorite;
+    var temperatureFavorite;
     
     //Inicio eventos click
     $btn.addEventListener("click",execReq,false);
@@ -39,21 +51,25 @@
     $textSearch.addEventListener("keydown",(e)=>{
         let enter = 13;
         if(e.which == enter){
-            execReq();
+            execReq($textSearch.value);
         }
     });
+    
 
     $close.addEventListener("click",function(e){
         doc.querySelector(".background").removeChild($blockRight);
         doc.querySelector(".background").removeChild($tipMain);
         $status.src = "img/down.png";
-        showFavorite();
     },false)
+
+    
+
     //Fim eventos click
 
     //funções
     function showFavorite(){
-        $("[data-js='favorite']").fadeIn(1000);
+        $(".display-favorite").css({display:"flex"});
+        $("[data-js='favorite']").fadeIn(1000).css({display:"flex"});
     }
 
     function hideFavorite(){
@@ -64,7 +80,7 @@
         if(doc.querySelectorAll("[data-js='blockRight']").length === 1){
             doc.querySelector(".background").removeChild($blockRight);
             doc.querySelector(".background").removeChild($tipMain);
-            showFavorite();
+
         }
     }
     function loadStart(){
@@ -78,6 +94,7 @@
             $(".button").fadeIn("fast");
         });
     }
+    
 
     function errorSearch(data){
             if(data.length === 0){
@@ -103,6 +120,11 @@
         $status.src = "img/sucess.png";
         $blockRight.style.display = "block";
         $textSearch.value = "";
+
+         IdlastFavorite  = data.id;
+         imgFavorite = data.data.icon;
+         cityFavorite = data.name;
+         temperatureFavorite = data.data.temperature;
     }
 
     function writeTips(data){
@@ -124,20 +146,41 @@
     }
     //fim funções
 
+    $checkFavorite.addEventListener("click",function(){
+        
+        if($checkFavorite.checked){
+            $imgFavorite.src =  `img/realistic/70px/${imgFavorite}.png`;
+            $cityFavorite.textContent = cityFavorite;
+            $temperatureFavorite.textContent = `${temperatureFavorite}º`
+            idFavorited = IdlastFavorite;
+            showFavorite();
 
-    function execReq(){
+        }
+        $checkFavorite.checked = true;
+    },false)
+
+    function isFavorited(param){
+        if(param !== idFavorited){
+            $checkFavorite.checked = false;
+            return
+        }
+        $checkFavorite.checked = true;
+    }
+
+    function execReq(searchValue){
 
         checkRight();
-        hideFavorite();
         loadStart();
 
-       $.get(`${linkReq}/api/v1/locale/city?name=${$textSearch.value}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
+       $.get(`${linkReq}/api/v1/locale/city?name=${searchValue}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
             if(errorSearch(data))
                 return
-
-            let idCity = data[0].id; 
+            let idCity = data[0].id;
+            isFavorited(idCity);
+            
                 $.get(`${linkReq}/api/v1/weather/locale/${idCity}/current?token=1db6b6239f44145c4ae69aac35b437a6`,(data)=>{
                     writeRight(data);
+                    console.log(data);
                         $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,(data) =>{
                             writeTips(data);
                         })  

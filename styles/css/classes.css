@@ -1,3 +1,6 @@
+.none {
+  display: none; }
+
 .img-responsive {
   width: 30%;
   max-width: 100px;
