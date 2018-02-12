@@ -39,9 +39,11 @@
     var $checkFavorite = $("[data-js='checkFavorite']");
     var $displayFavorite = $("[data-js='favorite']");
     var $closeFavorite = $("[data-js='closeFavorite']");
+    var $clickSearchFavorite =  $("[data-js='displayFavoriteClick']");
 
 
     var idFavorited;
+    var cityFavorited;
     var IdlastFavorite;
     var imgFavorite;
     var cityFavorite;
@@ -65,6 +67,7 @@
             $cityFavorite.text(cityFavorite);
             $temperatureFavorite.text(`${temperatureFavorite}º`);
             idFavorited = IdlastFavorite;
+            cityFavorited = cityFavorite;
             showFavorite();
             console.log($($checkFavorite.is(":checked")));
             $checkFavorite.prop("checked",true);
@@ -82,8 +85,8 @@
         resetFavorite();
     });
 
-    $displayFavorite.on("click",()=>{
-        execReq(cityFavorite);
+    $clickSearchFavorite.on("click",()=>{
+        execReq(cityFavorited);
     });
 
     //Fim eventos click
@@ -105,6 +108,7 @@
 
     function resetFavorite(){
         idFavorited = null;
+        cityFavorited = "";
         $checkFavorite.prop("checked",false);
     }
 
