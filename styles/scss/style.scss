@@ -146,11 +146,14 @@ body,html{
                     color:$text-color-black-op;
                     font-weight: bold;
                 }
+                
             }
+            
         }
         
         .prev-locate{
             color: $blue-text;
+            float: left;
         }
         .prev-date{
             color:$color-prev;
@@ -385,7 +388,7 @@ img{
     font-size: 14px;
     margin-top: 5px;
     cursor:pointer;
-    z-index: 99999999;
+    z-index: 4;
     background-color: rgba(255,255,255,0.8);
     transition: background-color .7s ease-in;
     margin-right: -5px;
@@ -396,8 +399,14 @@ img{
     margin-top: 5px;
     position: absolute;
     float: left;
-    color: rgba(0,0,0,0.8);
+    color:#535459;
     font-weight: bold;
+    z-index: 5;
+    cursor: pointer;
+    transition: color .7s ease;
+    &:hover{
+        color:#E74C3C;
+    }
 }
   
   .display-favorite{
@@ -416,7 +425,7 @@ img{
     color:#535459;
   }
   .background--cMax{
-    color: #EB2011;
+    color: #E74C3C;
     font-weight: bold;
     
   }
@@ -428,3 +437,11 @@ img{
       margin-top:10px;
       float: right;
   }
+
+  .block-right__sensation-bold{
+    color: $text-color-black-op;
+    font-weight: bold;
+}
+    .block-right__sensation-regular{
+        color: $text-color-black-op;
+    }

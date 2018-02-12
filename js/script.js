@@ -1,43 +1,45 @@
 
 //Adicionando escopo local!!
-(function(doc){
+(function(){
 
     //Setando variaveis para melhor manipulação.
-    var $btn = doc.querySelector("[data-js='btnSearch']");
-    var $textSearch = doc.querySelector("[data-js='textSearch']");
-    var $city = doc.querySelector("[data-js='locate']");
-    var $imgTemp = doc.querySelector("[data-js='imgTemp']");
-    var $tempC = doc.querySelector("[data-js='tempC']");
-    var $description = doc.querySelector("[data-js='description']");
-    var $close = doc.querySelector("[data-js='close']");
-    var $blockRight = doc.querySelector("[data-js='blockRight']");
-    var $sensation = doc.querySelector("[data-js='sensation']");
-    var $humidity = doc.querySelector("[data-js='humidity']");
-    var $wind = doc.querySelector("[data-js='wind']");
-    var $errorMessage = doc.querySelector("[data-js='errorMessage']");
-    var $status = doc.querySelector("[data-js='status']");
+    var $btn = $("[data-js='btnSearch']");
+    var $textSearch = $("[data-js='textSearch']");
+    var $city = $("[data-js='locate']");
+    var $imgTemp = $("[data-js='imgTemp']");
+    var $tempC = $("[data-js='tempC']");
+    var $description = $("[data-js='description']");
+    var $close = $("[data-js='close']");
+    var $blockRight = $("[data-js='blockRight']");
+    var $sensation = $("[data-js='sensation']");
+    var $humidity = $("[data-js='humidity']");
+    var $wind = $("[data-js='wind']");
+    var $errorMessage = $("[data-js='errorMessage']");
+    var $status = $("[data-js='status']");
     //variaveis tips
-    var $tipMain = doc.querySelector("[data-js='tipMain']");
-    var $prevImg1 = doc.querySelector("[data-js='prevImg1']");
-    var $prevImg2 = doc.querySelector("[data-js='prevImg2']");
-    var $prevImg3 = doc.querySelector("[data-js='prevImg3']");
-    var $prevCMax1 = doc.querySelector("[data-js='prevCMax1']");
-    var $prevCMax2 = doc.querySelector("[data-js='prevCMax2']");
-    var $prevCMax3 = doc.querySelector("[data-js='prevCMax3']");
-    var $prevCMin1 = doc.querySelector("[data-js='prevCMin1']");
-    var $prevCMin2 = doc.querySelector("[data-js='prevCMin2']");
-    var $prevCMin3 = doc.querySelector("[data-js='prevCMin3']");
-    var $dayLast = doc.querySelector("[data-js='dayLast']");
-    var $descritionPrev1 = doc.querySelector("[data-js='descriptionPrevision1']");
-    var $descritionPrev2 = doc.querySelector("[data-js='descriptionPrevision2']");
-    var $descritionPrev3 = doc.querySelector("[data-js='descriptionPrevision3']");
+    var $tipMain = $("[data-js='tipMain']");
+    var $prevImg1 = $("[data-js='prevImg1']");
+    var $prevImg2 = $("[data-js='prevImg2']");
+    var $prevImg3 = $("[data-js='prevImg3']");
+    var $prevCMax1 = $("[data-js='prevCMax1']");
+    var $prevCMax2 = $("[data-js='prevCMax2']");
+    var $prevCMax3 = $("[data-js='prevCMax3']");
+    var $prevCMin1 = $("[data-js='prevCMin1']");
+    var $prevCMin2 = $("[data-js='prevCMin2']");
+    var $prevCMin3 = $("[data-js='prevCMin3']");
+    var $dayLast = $("[data-js='dayLast']");
+    var $descritionPrev1 = $("[data-js='descriptionPrevision1']");
+    var $descritionPrev2 = $("[data-js='descriptionPrevision2']");
+    var $descritionPrev3 = $("[data-js='descriptionPrevision3']");
     var linkReq  = "https://apiadvisor.climatempo.com.br";
 
-    var favoriteDisplay = document.querySelector("[data-js='favorite']");
-    var $imgFavorite  = document.querySelector("[data-js='imageFavorite']");
-    var $cityFavorite  = document.querySelector("[data-js='cityFavorite']");
-    var $temperatureFavorite = document.querySelector("[data-js='temperatureFavorite']");
-    var $checkFavorite = doc.querySelector("[data-js='checkFavorite']");
+    var $imgFavorite  = $("[data-js='imageFavorite']");
+    var $cityFavorite  = $("[data-js='cityFavorite']");
+    var $temperatureFavorite = $("[data-js='temperatureFavorite']");
+    var $checkFavorite = $("[data-js='checkFavorite']");
+    var $displayFavorite = $("[data-js='favorite']");
+    var $closeFavorite = $("[data-js='closeFavorite']");
+
 
     var idFavorited;
     var IdlastFavorite;
@@ -46,43 +48,73 @@
     var temperatureFavorite;
     
     //Inicio eventos click
-    $btn.addEventListener("click",execReq,false);
+    $btn.on("click",() => execReq($textSearch.val()));
 
-    $textSearch.addEventListener("keydown",(e)=>{
+    $textSearch.keydown((e)=>{
+        console.log($textSearch.val());
         let enter = 13;
         if(e.which == enter){
-            execReq($textSearch.value);
+            execReq($textSearch.val());
+        }
+    });
+
+    $checkFavorite.on("click",()=>{
+        if($($checkFavorite.is(":checked"))){
+            $($displayFavorite).fadeIn("slow");
+            $imgFavorite.attr("src",`img/realistic/70px/${imgFavorite}.png`);
+            $cityFavorite.text(cityFavorite);
+            $temperatureFavorite.text(`${temperatureFavorite}º`);
+            idFavorited = IdlastFavorite;
+            showFavorite();
+            console.log($($checkFavorite.is(":checked")));
+            $checkFavorite.prop("checked",true);
         }
     });
     
+    $close.on("click",()=>{
+        $blockRight.detach();
+        $tipMain.detach();
+        $status.attr("src","img/down.png");
+    });
 
-    $close.addEventListener("click",function(e){
-        doc.querySelector(".background").removeChild($blockRight);
-        doc.querySelector(".background").removeChild($tipMain);
-        $status.src = "img/down.png";
-    },false)
-
-    
+    $closeFavorite.on("click",()=>{
+        $($displayFavorite).fadeOut("slow");
+        resetFavorite();
+    });
 
     //Fim eventos click
 
     //funções
     function showFavorite(){
-        $(".display-favorite").css({display:"flex"});
-        $("[data-js='favorite']").fadeIn(1000).css({display:"flex"});
+        $displayFavorite
+            .css({display:"flex"})
+            .fadeIn("slow");
     }
 
     function hideFavorite(){
-        $("[data-js='favorite']").fadeOut(1000);
+        $displayFavorite.fadeOut(1000);
+    }
+
+    function resetFavorite(){
+        idFavorited = null;
+        $checkFavorite.prop("checked",false);
+    }
+
+    function isFavorited(param){
+        if(param !== idFavorited){
+            $checkFavorite.prop("checked",false);
+            return
+        }
+        $checkFavorite.prop("checked",true);
     }
     
     function checkRight(){
-        if(doc.querySelectorAll("[data-js='blockRight']").length === 1){
-            doc.querySelector(".background").removeChild($blockRight);
-            doc.querySelector(".background").removeChild($tipMain);
-
+        if($blockRight.length === 1){
+            $blockRight.detach();
+            $tipMain.detach();
         }
     }
+    
     function loadStart(){
         $(".button").fadeOut(1,function(){
             $(".loader--loading").fadeIn("fast");
@@ -95,31 +127,30 @@
         });
     }
     
-
     function errorSearch(data){
             if(data.length === 0){
-                $errorMessage.textContent = `Cidade ${$textSearch.value} não existe.`
-                $status.src = "img/error.png";
+                $errorMessage.text(`Cidade ${$textSearch.val()} não existe.`);
+                $status.attr("src","img/error.png");
                 loadEnd();
                 checkRight();
                 return true;
             }
         return
     }
+
     function writeRight(data){
-        doc.querySelector(".background").appendChild($blockRight);
-        $city.textContent = `${data.name} - ${data.state}` 
-        $description.textContent = data.data.condition;
-        $imgTemp.src = `img/realistic/70px/${data.data.icon}.png`
-        $tempC.textContent = `${data.data.temperature}º`
-        $sensation.textContent = `${data.data.sensation}º`
-        $sensation.textContent = `${data.data.sensation}º`
-        $humidity.textContent = `${data.data.humidity}%`
-        $wind.textContent = `${data.data.wind_velocity} km/h`
-        $errorMessage.textContent = "";
-        $status.src = "img/sucess.png";
-        $blockRight.style.display = "block";
-        $textSearch.value = "";
+        $(".background").append($blockRight);
+        $city.text(`${data.name} - ${data.state}`);
+        $description.text(data.data.condition);
+        $imgTemp.attr("src",`img/realistic/70px/${data.data.icon}.png`);
+        $tempC.text(`${data.data.temperature}º`);
+        $sensation.text(`${data.data.sensation}º`);
+        $humidity.text(`${data.data.humidity}%`);
+        $wind.text(`${data.data.wind_velocity} km/h`);
+        $errorMessage.text("");
+        $status.attr("src","img/sucess.png")
+        $blockRight.css({"display":"block"});
+        $textSearch.val("");
 
          IdlastFavorite  = data.id;
          imgFavorite = data.data.icon;
@@ -128,47 +159,27 @@
     }
 
     function writeTips(data){
-        $prevImg1.src = `img/realistic/70px/${data.data[0].text_icon.icon.day}.png`;
-        $prevImg2.src = `img/realistic/70px/${data.data[1].text_icon.icon.day}.png`;
-        $prevImg3.src = `img/realistic/70px/${data.data[2].text_icon.icon.day}.png`;
-        $prevCMax1.textContent = `Max: ${data.data[0].temperature.max}º`
-        $prevCMax2.textContent = `Max: ${data.data[1].temperature.max}º`
-        $prevCMax3.textContent = `Max: ${data.data[2].temperature.max}º`
-        $prevCMin1.textContent = `Min: ${data.data[0].temperature.min}º`
-        $prevCMin2.textContent = `Min: ${data.data[1].temperature.min}º`
-        $prevCMin3.textContent = `Min: ${data.data[2].temperature.min}º`
-        $dayLast.textContent = `${data.data[2].date_br}`
-        $descritionPrev1.textContent = `${data.data[0].text_icon.text.phrase.reduced}`
-        $descritionPrev2.textContent = `${data.data[1].text_icon.text.phrase.reduced}`
-        $descritionPrev3.textContent = `${data.data[2].text_icon.text.phrase.reduced}`
-        $tipMain.style.display = "flex";
-        doc.querySelector(".background").appendChild($tipMain);
+        $(".background").append($tipMain);
+        $prevImg1.attr("src",`img/realistic/70px/${data.data[0].text_icon.icon.day}.png`);
+        $prevImg2.attr("src", `img/realistic/70px/${data.data[1].text_icon.icon.day}.png`);
+        $prevImg3.attr("src", `img/realistic/70px/${data.data[2].text_icon.icon.day}.png`);
+        $prevCMax1.text(`Max: ${data.data[0].temperature.max}º`);
+        $prevCMax2.text(`Max: ${data.data[1].temperature.max}º`);
+        $prevCMax3.text(`Max: ${data.data[2].temperature.max}º`);
+        $prevCMin1.text(`Min: ${data.data[0].temperature.min}º`);
+        $prevCMin2.text(`Min: ${data.data[1].temperature.min}º`);
+        $prevCMin3.text(`Min: ${data.data[2].temperature.min}º`);
+        $dayLast.text(`${data.data[2].date_br}`);
+        $descritionPrev1.text(`${data.data[0].text_icon.text.phrase.reduced}`);
+        $descritionPrev2.text(`${data.data[1].text_icon.text.phrase.reduced}`);
+        $descritionPrev3.text(`${data.data[2].text_icon.text.phrase.reduced}`);
+        $tipMain.css({display:"flex"});
     }
     //fim funções
 
-    $checkFavorite.addEventListener("click",function(){
-        
-        if($checkFavorite.checked){
-            $imgFavorite.src =  `img/realistic/70px/${imgFavorite}.png`;
-            $cityFavorite.textContent = cityFavorite;
-            $temperatureFavorite.textContent = `${temperatureFavorite}º`
-            idFavorited = IdlastFavorite;
-            showFavorite();
 
-        }
-        $checkFavorite.checked = true;
-    },false)
-
-    function isFavorited(param){
-        if(param !== idFavorited){
-            $checkFavorite.checked = false;
-            return
-        }
-        $checkFavorite.checked = true;
-    }
-
+    //requisições get
     function execReq(searchValue){
-
         checkRight();
         loadStart();
 
@@ -180,15 +191,15 @@
             
                 $.get(`${linkReq}/api/v1/weather/locale/${idCity}/current?token=1db6b6239f44145c4ae69aac35b437a6`,(data)=>{
                     writeRight(data);
-                    console.log(data);
+
                         $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,(data) =>{
                             writeTips(data);
                         })  
                         .always(() => loadEnd())
-                        .fail(() => $errorMessage.textContent = `Servidor Offline` )
+                        .fail(() => $errorMessage.text(`Servidor Offline`))
                     }
                 )
             })
     }
 
-})(document)
+})()
