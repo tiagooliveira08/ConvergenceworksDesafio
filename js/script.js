@@ -82,9 +82,17 @@
         resetFavorite();
     });
 
+    $displayFavorite.on("click",()=>{
+        execReq(cityFavorite);
+    });
+
     //Fim eventos click
 
     //funções
+        $("img").on("error",function(){
+            $(this).attr("src","./img/invalideimage.png");
+        });
+
     function showFavorite(){
         $displayFavorite
             .css({display:"flex"})
@@ -183,23 +191,26 @@
         checkRight();
         loadStart();
 
-       $.get(`${linkReq}/api/v1/locale/city?name=${searchValue}&token=1db6b6239f44145c4ae69aac35b437a6`, (data) =>{
+       $.get(`${linkReq}/api/v1/locale/city?name=${searchValue}&token=1db6b6239f44145c4ae69aac35b437a6`, data =>{
             if(errorSearch(data))
                 return
             let idCity = data[0].id;
             isFavorited(idCity);
             
-                $.get(`${linkReq}/api/v1/weather/locale/${idCity}/current?token=1db6b6239f44145c4ae69aac35b437a6`,(data)=>{
+                $.get(`${linkReq}/api/v1/weather/locale/${idCity}/current?token=1db6b6239f44145c4ae69aac35b437a6`,data =>{
                     writeRight(data);
 
-                        $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,(data) =>{
+                        $.get(`${linkReq}/api/v1/forecast/locale/${idCity}/days/15?token=1db6b6239f44145c4ae69aac35b437a6`,data =>{
                             writeTips(data);
                         })  
                         .always(() => loadEnd())
-                        .fail(() => $errorMessage.text(`Servidor Offline`))
                     }
                 )
-            })
+            }).fail(() => {
+                $errorMessage.text(`Falha na conexão com o servidor!`); 
+                loadEnd()
+                $status.attr("src","img/error.png");
+                })
     }
 
 })()
