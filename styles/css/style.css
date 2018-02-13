@@ -93,7 +93,8 @@
 @font-face {
   font-family: Poppins;
   src: url("../../fonts/Poppins-Regular.ttf"); }
-body, html {
+body,
+html {
   height: 100%;
   width: 100%; }
 
@@ -144,13 +145,14 @@ body, html {
 .background {
   min-height: 100%;
   width: 100%;
-  background: #F7F7F7;
+  background-color: white;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap; }
   .background .block-left {
+    margin-top: 100px !important;
     width: 40%;
     min-height: 300px;
     height: auto;
@@ -191,6 +193,7 @@ body, html {
         color: #535459; }
   .background .block-right {
     margin-left: 20px;
+    margin-top: 50px;
     width: 30%;
     height: auto;
     padding: 15px;
@@ -233,7 +236,8 @@ body, html {
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    margin-top: 20px; }
     .background .tip .tips {
       display: flex;
       align-items: center;
@@ -249,7 +253,8 @@ body, html {
       border-radius: 5px;
       box-shadow: 0 10px 6px -10px #777;
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      z-index: 2; }
+      z-index: 2;
+      margin-top: 50px; }
       .background .tip .tips .img-today {
         display: inline-block; }
       .background .tip .tips .max {

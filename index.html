@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,56 +8,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="styles/css/style.css" />
 </head>
+
 <body>
     <div class="loader-extern__loading">
-        <img src="./img/loaderextern.gif" alt="loading"/>
+        <img src="./img/loaderextern.gif" alt="loading" />
         <p class="text-center loader-extern__message">Clima Tempo ConvergenceWorks</p>
     </div>
     <div class="display__display-all">
         <nav class="navbar" data-js="navbar">
-                <h1 class="logo">ConvergenceWorks</h1>
-                <div class="display-favorite" data-js="favorite">
-                <span class="header__close-favorite" data-js="closeFavorite"><div class="close__delete close__delete--position"></div></span>
-                    <div class="background--infoDiv" data-js="displayFavoriteClick">
-                        <div class="background--image"><img src="img/realistic/70px/1.png" data-js="imageFavorite" /></div>
-                        <div class="backgound__favorite"> 
-                            <span class="background--city" data-js="cityFavorite">Salvador</span>
-                            <div class="flex-row flex-row-center">
-                                    <span class="background--cMax" data-js="temperatureFavorite">29º</span>
-                            </div>
+            <h1 class="logo">ConvergenceWorks</h1>
+            <div class="display-favorite" data-js="favorite">
+                <span class="header__close-favorite" data-js="closeFavorite">
+                    <div class="close__delete close__delete--position"></div>
+                </span>
+                <div class="background--infoDiv" data-js="displayFavoriteClick">
+                    <div class="background--image">
+                        <img src="img/realistic/70px/1.png" data-js="imageFavorite" />
+                    </div>
+                    <div class="backgound__favorite">
+                        <span class="background--city" data-js="cityFavorite">Salvador</span>
+                        <div class="flex-row flex-row-center">
+                            <span class="background--cMax" data-js="temperatureFavorite">29º</span>
                         </div>
                     </div>
                 </div>
+            </div>
         </nav>
         <div>
-                <img src="img/chuva.png" alt="chuva" class="background--chuva"/>
+            <img src="img/chuva.png" alt="chuva" class="background--chuva" />
         </div>
-        <div  class="background--responsive">
-            <img src="img/sun.png" alt="sun" class="background--sun"/>
+        <div class="background--responsive">
+            <img src="img/sun.png" alt="sun" class="background--sun" />
         </div>
-        
-    
-            
 
-    <article class="background">
-        
-        <section class="block-left">
-            <div class="block-left-top">
-                <span class="prev-temp text-center">Descubra como está o tempo em sua cidade de uma forma fácil e rápida!!</span>
-                <p><div class="arrow-responsive"><img src="img/down.png" alt="seta para baixo" class="pd10 arrow" data-js="status"></div></p>
-            </div>
-            <div class="block-left-bottom">
-                <input type="text" class="text-search" data-js="textSearch" placeholder="Nome da cidade" tabindex="1"/>
-                <button class="button" data-js="btnSearch" tabindex="2"><span>Pesquisar</span></button>
-                <div class="loader--loading">
+
+
+
+        <article class="background">
+
+            <section class="block-left">
+                <div class="block-left-top">
+                    <span class="prev-temp text-center">Descubra como está o tempo em sua cidade de uma forma fácil e rápida!!</span>
+                    <p>
+                        <div class="arrow-responsive">
+                            <img src="img/down.png" alt="seta para baixo" class="pd10 arrow" data-js="status">
+                        </div>
+                    </p>
                 </div>
-               
-            </div>
-            
-            <p class="error-message text-center" data-js="errorMessage"></p>
-        </section>
+                <div class="block-left-bottom">
+                    <input type="text" class="text-search" data-js="textSearch" placeholder="Nome da cidade" tabindex="1" />
+                    <button class="button" data-js="btnSearch" tabindex="2">
+                        <span>Pesquisar</span>
+                    </button>
+                    <div class="loader--loading">
+                    </div>
+
+                </div>
+
+                <p class="error-message text-center" data-js="errorMessage"></p>
+            </section>
             <section class="block-right" data-js="blockRight">
-                <span class="close" data-js="close" tabindex="3"><div class="close__delete"></div></span>
+                <span class="close" data-js="close" tabindex="3">
+                    <div class="close__delete"></div>
+                </span>
                 <div class="block-right-top">
                     <div class="flex-row">
                         <h2 class="prev-locate" data-js="locate">
@@ -68,18 +82,18 @@
                             </span>
                         </div>
                     </div>
-                    <div class="flex-inline"> 
+                    <div class="flex-inline">
                         <div class="img-responsive">
                             <img alt="tempo no momento" data-js="imgTemp">
                         </div>
-                        
+
                         <div class="flex-column ml20">
-                                <h3 class="prev-c" data-js="tempC"></h3>
-                                <span class="description" data-js="description"></span>
+                            <h3 class="prev-c" data-js="tempC"></h3>
+                            <span class="description" data-js="description"></span>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
                 <div class="flex-row flex-row-center mt30">
                     <div class="flex-column ml20">
@@ -95,44 +109,14 @@
                         <span class="text-center block-right__sensation-regular" data-js="wind"></span>
                     </div>
             </section>
-        <section class="tip" data-js="tipMain">
-                <div class="tips" data-js="tip1">
-                    <div class="img-responsive">
-                        <img  class="img-today" data-js="prevImg1"/>
-                    </div>
-                    <div class="flex-column">
-                        <span class="day-today bolder">Hoje</span>
-                        <span class="max"><div class="arrow-reponsive d-block"><img src="img/myArrow.png" alt="seta para cima" /></div><span class="block-right__sensation-regular" data-js="prevCMax1">Max: 26º</span></span>
-                        <span class="max mt10"><div class="arrow-reponsive d-block"><img src="img/myArrow2.png" alt="seta para baixo" /></div><span class="block-right__sensation-regular" data-js="prevCMin1">min: 26º</span></span>
-                    </div>
-                    <span class="description-prev pd10 mt10 " data-js="descriptionPrevision1"></span>
-                </div>
-                <div class="tips" data-js="tip1">
-                    <div class="img-responsive">
-                        <img class="img-today" data-js="prevImg2"/>
-                    </div>
-                    <div class="flex-column">
-                        <span class="day-today bolder">Amanhã</span>
-                        <span class="max"><div class="arrow-reponsive d-block"><img src="img/myArrow.png" alt="seta para cima" /></div><span class="block-right__sensation-regular" data-js="prevCMax2"></span></span>
-                        <span class="max mt10"><div class="arrow-reponsive d-block"><img src="img/myArrow2.png" alt="seta para baixo" /></div><span class="block-right__sensation-regular" data-js="prevCMin2"></span></span>
-                    </div>
-                    <span class="description-prev pd10 tp-10" data-js="descriptionPrevision2"></span>
-                </div>
-                <div class="tips" data-js="tip1">
-                    <div class="img-responsive">
-                        <img class="img-today" data-js="prevImg3"/>
-                    </div>
-                    <div class="flex-column">
-                        <span class="day-today bolder" data-js="dayLast"></span>
-                        <span class="max"><div class="arrow-reponsive d-block"><img src="img/myArrow.png" alt="seta para cima" /></div><span class="block-right__sensation-regular" data-js="prevCMax3">Max: 26º</span></span>
-                        <span class="max mt10"><div class="arrow-reponsive d-block"><img src="img/myArrow2.png" alt="seta para baixo" /></div><span class="block-right__sensation-regular" data-js="prevCMin3">Min: 26º</span></span>
-                    </div>
-                    <span class="description-prev pd10 mt10" data-js="descriptionPrevision3"></span>
-                </div>
-        </section>
-    </article>
-</div>
+            <section class="tip" data-js="tipMain">
+
+
+            </section>
+        </article>
+        </div>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/script.js"></script>
+
 </html>
