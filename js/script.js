@@ -96,7 +96,7 @@
     });
 
     $(window).on("load", function () {
-        $(".loader-extern__loading").fadeOut("slow", function () {
+        $(".loader-extern__loading").delay(2000).fadeOut("slow", function () {
             $(".display__display-all").fadeIn("slow", function () {
                 //...
             })
