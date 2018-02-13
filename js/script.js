@@ -52,7 +52,6 @@
     $btn.on("click", () => execReq($textSearch.val()));
 
     $textSearch.keydown((e) => {
-        console.log($textSearch.val());
         let enter = 13;
         if (e.which == enter) {
             execReq($textSearch.val());
