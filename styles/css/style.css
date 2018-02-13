@@ -122,6 +122,25 @@ body, html {
     display: inline-block;
     font-size: 25px; }
 
+.display__display-all {
+  height: 100%;
+  display: none; }
+
+.loader-extern__loading {
+  width: 200px;
+  height: 200px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  margin: auto; }
+
+.loader-extern__message {
+  color: #535459;
+  font-weight: bold;
+  font-size: 20px; }
+
 .background {
   min-height: 100%;
   width: 100%;
@@ -300,11 +319,25 @@ body, html {
 
   .tips:last-child {
     margin-bottom: 20px; } }
-.close {
+.close__delete--position {
+  margin-top: 7px;
+  width: 10px;
+  height: 10px; }
+  .close__delete--position:hover {
+    opacity: .6 !important; }
+
+.close__delete {
   cursor: pointer;
   float: right;
-  color: #535459;
-  font-weight: bold; }
+  width: 16px;
+  height: 16px;
+  opacity: .6;
+  background-image: url("../../img/delete-bin.png");
+  transition: all .7s ease-in;
+  z-index: 9; }
+  .close__delete:hover {
+    background-image: url("../../img/delete-bin-red.png");
+    opacity: .6; }
 
 img {
   width: 100%;
@@ -315,7 +348,7 @@ img {
   width: 50px;
   height: 50px;
   display: inline-block;
-  margin-top: -13px; }
+  margin-top: -18px; }
 
 .block-right--tw-heart {
   background: url(http://i.imgur.com/zw8ahUb.png) no-repeat 0 0;

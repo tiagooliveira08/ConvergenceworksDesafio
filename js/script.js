@@ -75,13 +75,13 @@
     });
     
     $close.on("click",()=>{
-        $blockRight.detach();
-        $tipMain.detach();
+        $blockRight.hide(300,()=> 
+            $tipMain.fadeOut(700));
         $status.attr("src","img/down.png");
     });
 
     $closeFavorite.on("click",()=>{
-        $($displayFavorite).fadeOut("slow");
+        $($displayFavorite).hide("slow");
         resetFavorite();
     });
 
@@ -96,10 +96,17 @@
             $(this).attr("src","./img/invalideimage.png");
         });
 
+        $(window).on("load",function(){
+            $(".loader-extern__loading").delay(2500).fadeOut("slow",function(){
+                $(".display__display-all").fadeIn("slow",function(){
+                    //...
+                })
+            });
+        })
+
     function showFavorite(){
         $displayFavorite
-            .css({display:"flex"})
-            .fadeIn("slow");
+            .show("slow");
     }
 
     function hideFavorite(){
@@ -122,20 +129,20 @@
     
     function checkRight(){
         if($blockRight.length === 1){
-            $blockRight.detach();
-            $tipMain.detach();
+            $blockRight.hide();
+            $tipMain.hide();
         }
     }
     
     function loadStart(){
-        $(".button").fadeOut(1,function(){
+            $btn.fadeOut(1,function(){
             $(".loader--loading").fadeIn("fast");
         });
     }
 
     function loadEnd(){
         $(".loader--loading").fadeOut("slow",function(){
-            $(".button").fadeIn("fast");
+            $btn.fadeIn("fast");
         });
     }
     
@@ -151,7 +158,7 @@
     }
 
     function writeRight(data){
-        $(".background").append($blockRight);
+        $blockRight.show(300);
         $city.text(`${data.name} - ${data.state}`);
         $description.text(data.data.condition);
         $imgTemp.attr("src",`img/realistic/70px/${data.data.icon}.png`);
@@ -161,9 +168,7 @@
         $wind.text(`${data.data.wind_velocity} km/h`);
         $errorMessage.text("");
         $status.attr("src","img/sucess.png")
-        $blockRight.css({"display":"block"});
         $textSearch.val("");
-
          IdlastFavorite  = data.id;
          imgFavorite = data.data.icon;
          cityFavorite = data.name;
@@ -171,7 +176,7 @@
     }
 
     function writeTips(data){
-        $(".background").append($tipMain);
+        $tipMain.fadeIn("slow");
         $prevImg1.attr("src",`img/realistic/70px/${data.data[0].text_icon.icon.day}.png`);
         $prevImg2.attr("src", `img/realistic/70px/${data.data[1].text_icon.icon.day}.png`);
         $prevImg3.attr("src", `img/realistic/70px/${data.data[2].text_icon.icon.day}.png`);
