@@ -40,81 +40,83 @@
         <div class="background--responsive">
             <img src="img/sun.png" alt="sun" class="background--sun" />
         </div>
-
-
-
-
         <article class="background">
-
-            <section class="block-left">
-                <div class="block-left-top">
-                    <span class="prev-temp text-center">Descubra como está o tempo em sua cidade de uma forma fácil e rápida!!</span>
-                    <p>
-                        <div class="arrow-responsive">
-                            <img src="img/down.png" alt="seta para baixo" class="pd10 arrow" data-js="status">
+            <div class="content">
+                <section class="block-left">
+                    <div class="block-left-top">
+                        <span class="prev-temp text-center">Descubra como está o tempo em sua cidade de uma forma fácil e rápida!!</span>
+                        <p>
+                            <div class="arrow-responsive">
+                                <img src="img/down.png" alt="seta para baixo" class="pd10 arrow" data-js="status">
+                            </div>
+                        </p>
+                    </div>
+                    <div class="block-left-bottom">
+                        <input type="text" class="text-search" data-js="textSearch" placeholder="Nome da cidade" tabindex="1" />
+                        <button class="button" data-js="btnSearch" tabindex="2">
+                            <span>Pesquisar</span>
+                        </button>
+                        <div class="loader--loading">
                         </div>
-                    </p>
+
+                    </div>
+
+                    <p class="error-message text-center" data-js="errorMessage"></p>
+                </section>
+
+                <div class="flex-column flex-column--right" data-js="blockRight">
+                    <div class="block-right__timenow-div">
+                        <span class="block-right__timenow-title">Tempo no momento</span>
+                    </div>
+                    <section class="block-right">
+                        <span class="close" data-js="close" tabindex="3">
+                            <div class="close__delete"></div>
+                        </span>
+                        <div class="block-right-top">
+                            <div class="flex-row">
+                                <h2 class="prev-locate" data-js="locate">
+                                </h2>
+                                <div>
+                                    <span class="block-right--tw-heart-box">
+                                        <input type="checkbox" name="name" value="" data-js="checkFavorite">
+                                        <span class="block-right--tw-heart"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-inline">
+                                <div class="img-responsive">
+                                    <img alt="tempo no momento" data-js="imgTemp">
+                                </div>
+
+                                <div class="flex-column ml20">
+                                    <h3 class="prev-c" data-js="tempC"></h3>
+                                    <span class="description" data-js="description"></span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="flex-row flex-row-center mt30">
+                            <div class="flex-column ml20">
+                                <span class="block-right__sensation-bold">Sensação</span>
+                                <span class="text-center block-right__sensation-regular" data-js="sensation"></span>
+                            </div>
+                            <div class="flex-column ml20">
+                                <span class="block-right__sensation-bold">umidade</span>
+                                <span class="text-center block-right__sensation-regular" data-js="humidity"></span>
+                            </div>
+                            <div class="flex-column ml20">
+                                <span class="block-right__sensation-bold">Vento</span>
+                                <span class="text-center block-right__sensation-regular" data-js="wind"></span>
+                            </div>
+                    </section>
+                    </div>
                 </div>
-                <div class="block-left-bottom">
-                    <input type="text" class="text-search" data-js="textSearch" placeholder="Nome da cidade" tabindex="1" />
-                    <button class="button" data-js="btnSearch" tabindex="2">
-                        <span>Pesquisar</span>
-                    </button>
-                    <div class="loader--loading">
-                    </div>
-
-                </div>
-
-                <p class="error-message text-center" data-js="errorMessage"></p>
-            </section>
-            <section class="block-right" data-js="blockRight">
-                <span class="close" data-js="close" tabindex="3">
-                    <div class="close__delete"></div>
-                </span>
-                <div class="block-right-top">
-                    <div class="flex-row">
-                        <h2 class="prev-locate" data-js="locate">
-                        </h2>
-                        <div>
-                            <span class="block-right--tw-heart-box">
-                                <input type="checkbox" name="name" value="" data-js="checkFavorite">
-                                <span class="block-right--tw-heart"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="flex-inline">
-                        <div class="img-responsive">
-                            <img alt="tempo no momento" data-js="imgTemp">
-                        </div>
-
-                        <div class="flex-column ml20">
-                            <h3 class="prev-c" data-js="tempC"></h3>
-                            <span class="description" data-js="description"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="flex-row flex-row-center mt30">
-                    <div class="flex-column ml20">
-                        <span class="block-right__sensation-bold">Sensação</span>
-                        <span class="text-center block-right__sensation-regular" data-js="sensation"></span>
-                    </div>
-                    <div class="flex-column ml20">
-                        <span class="block-right__sensation-bold">umidade</span>
-                        <span class="text-center block-right__sensation-regular" data-js="humidity"></span>
-                    </div>
-                    <div class="flex-column ml20">
-                        <span class="block-right__sensation-bold">Vento</span>
-                        <span class="text-center block-right__sensation-regular" data-js="wind"></span>
-                    </div>
-            </section>
-            <section class="tip" data-js="tipMain">
-
-
-            </section>
+            </div>
         </article>
-        </div>
+    <section class="tip" data-js="tipMain">
+
+    </section>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/script.js"></script>

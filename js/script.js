@@ -67,7 +67,6 @@
             idFavorited = IdlastFavorite;
             cityFavorited = cityFavorite;
             showFavorite();
-            console.log($($checkFavorite.is(":checked")));
             $checkFavorite.prop("checked", true);
         }
     });
@@ -98,7 +97,7 @@
         $(".loader-extern__loading").delay(2000).fadeOut("slow", function () {
             $(".display__display-all").fadeIn("slow", function () {
                 //...
-            })
+            }).css("display","flex");
         });
     })
     //fim Funções genericas
@@ -134,8 +133,7 @@
         if ($blockRight.length === 1) {
             $blockRight.hide();
             $tipMain.hide();
-            $(".tips").remove();
-
+            $(".tips").detach();
         }
     }
 
@@ -154,6 +152,7 @@
     function errorSearch(data) {
         if (data.length === 0) {
             $errorMessage.text(`Cidade ${$textSearch.val()} não existe.`);
+            $textSearch.val("");
             $status.attr("src", "img/error.png");
             loadEnd();
             checkRight();
@@ -178,7 +177,6 @@
         imgFavorite = data.data.icon;
         cityFavorite = data.name;
         temperatureFavorite = data.data.temperature;
-
     }
 
 
@@ -203,20 +201,21 @@
             </span>
         </div>
         <span class="description-prev pd10 mt10 " data-js="descriptionPrevision1">${info}</span>
-    </div>`;
+        </div>`;
         return temp;
     }
 
-    var days = ['Domingãoo!', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sabadãoo!'];
-
+    var days = ['Domingãoo!', 'Segunda - Feira', 'Terça - Feira', 'Quarta - Feira', 'Quinta - Feira', 'Sexta - Feira', 'Sabadãoo!'];
+    var tempArray = [];
     function writeTips(data) {
+        
         for (var i = 0; i < data.data.length; i++) {
             let d;
             d = new Date(data.data[i].date);
             console.log(days[d.getUTCDay()]);
             daysReformuled = days[d.getUTCDay()]
 
-            $tipMain.append(writing(
+            tempArray.push(writing(
                 daysReformuled,
                 data.data[i].temperature.max,
                 data.data[i].temperature.min,
@@ -228,9 +227,10 @@
                 break;
             //endLoop
         }
-        $tipMain.css({
-            display: "flex"
-        });
+        
+
+        $tipMain.append(tempArray).fadeIn(600).css("display","flex");
+        tempArray = [];
     }
 
     //fim funções do sistema

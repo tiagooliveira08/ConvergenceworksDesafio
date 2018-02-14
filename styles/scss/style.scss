@@ -48,7 +48,8 @@
         }
     } //Inicio componentes
     .display__display-all {
-        height: 100%;
+        min-height: 100%;
+        height: auto;
         display: none;
     }
 
@@ -72,25 +73,25 @@
     .background {
         min-height: 100%;
         width: 100%;
-        background-color: white;
+        height: auto;
+        background-color: transparent;
         background-size: cover;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         flex-wrap: wrap;
         .block-left {
-            margin-top: 100px !important;
             width: 40%;
             min-height: $tamanho-prev;
             height: auto;
             background-color: rgba(255, 255, 255, 1);
+            border-top: 1px solid rgba(0, 0, 0, .1);
             border-bottom: 1px solid #ccc;
             border-left: 1px solid rgba(0, 0, 0, .1);
             border-right: 1px solid rgba(0, 0, 0, .1);
             border-radius: 5px;
             box-shadow: $card-shadow;
             transition: $card-transition;
-            margin-top: 60px;
             padding: 10px;
             z-index: 2;
             .error-message {
@@ -126,20 +127,20 @@
         }
         .block-right {
             margin-left: 20px;
-            margin-top: 50px;
-            width: 30%;
+            width: 100%;
             height: auto;
             padding: 15px;
             background-color: rgba(255, 255, 255, 1);
             border-bottom: 1px solid #ccc;
             border-left: 1px solid rgba(0, 0, 0, .1);
             border-right: 1px solid rgba(0, 0, 0, .1);
+            border-top: 1px solid rgba(0, 0, 0, .1);
             border-radius: 5px;
             box-shadow: $card-shadow;
             transition: $card-transition;
-            z-index: 2;
+            z-index: 20;
             transition: opacity 1s ease;
-            display: none;
+            display: block;
             .block-right-top {
                 .flex-inline {
                     margin-top: 10px;
@@ -171,64 +172,31 @@
                 margin-top: 5px;
             }
         }
-        .tip {
-            width: 100%;
-            height: auto;
-            display: none;
-            flex-direction: row;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-            margin-top: 20px;
-            .tips {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-wrap: wrap;
-                width: 30%;
-                height: auto;
-                min-height: 150px;
-                background-color: rgba(255, 255, 255, 1);
-                border-bottom: 1px solid #ccc;
-                border-left: 1px solid rgba(0, 0, 0, .1);
-                border-right: 1px solid rgba(0, 0, 0, .1);
-                border-radius: 5px;
-                box-shadow: $card-shadow;
-                transition: $card-transition;
-                z-index: 2;
-                margin-top: 50px;
-                .img-today {
-                    display: inline-block;
-                }
-                .max {
-                    display: flex;
-                    justify-content: space-around;
-                }
-                .day-today {
-                    color: $blue-text;
-                    margin-bottom: 10px;
-                }
-            }
-        }
-    }
-
-    //Fim componentes
+    } //Fim componentes
     //Inicio media query
     @media (max-width: 1018px) {
-        .background .block-right {
+        .flex-column--right {
+            margin-top: 20px;
             width: 80%;
-            align-items: center;
-            justify-content: center;
-            margin-top: 50px;
-            margin-left: 0px;
             margin-bottom: 50px;
         }
+        .flex-column--right .block-right{
+            margin-left: 0px !important;
+        }
+        .block-right__timenow-div{
+            margin-left: 0px !important;
+        }
+
         .background .block-left {
             width: 60%;
             align-items: center;
             justify-content: center;
             margin-top: 150px;
         }
+        .content {
+            flex-direction: column;
+        }
+
     }
 
     @media (max-width: 700px) {
@@ -274,19 +242,17 @@
         .background .block-left {
             width: 98%;
         }
-        .background .block-right {
+        .background .flex-column--right {
             width: 98%;
         }
+
         .tips {
             width: 80% !important;
-            margin-top: 40px;
         }
         .tips:last-child {
             margin-bottom: 20px;
         }
-    }
-
-    //Fim media query
+    } //Fim media query
     //CSS Globais
     .close__delete--position {
         margin-top: 7px;
@@ -363,23 +329,22 @@
     }
 
     .background--responsive {
-        width: 10%;
         height: auto;
     }
 
     .background--chuva {
-        opacity: 0.3;
+        opacity: 0.4;
         width: 120%;
         height: 100%;
         float: right;
         position: fixed;
         top: 0;
         right: 0;
-        z-index: 1;
+        z-index: -2;
     }
 
     .background--sun {
-        opacity: 0.7;
+        opacity: 1;
         width: 50%;
         height: auto;
         float: right;
@@ -387,7 +352,7 @@
         top: 0;
         right: 0;
         margin-top: 40px;
-        z-index: 1;
+        z-index: 0;
     }
 
     .background--infoDiv {
@@ -461,4 +426,72 @@
 
     .block-right__sensation-regular {
         color: $text-color-black-op;
+    }
+
+    .content {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .tip {
+        width: 100%;
+        height: auto;
+        display: none;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        z-index: 2;
+        background-color: white;
+        .tips {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 30%;
+            height: auto;
+            min-height: 150px;
+            background-color: rgba(255, 255, 255, 1);
+            border-bottom: 1px solid #ccc;
+            border-left: 1px solid rgba(0, 0, 0, .1);
+            border-right: 1px solid rgba(0, 0, 0, .1);
+            border-radius: 5px;
+            box-shadow: $card-shadow;
+            transition: $card-transition;
+            z-index: 2;
+            margin-top: 50px;
+            .img-today {
+                display: inline-block;
+            }
+            .max {
+                display: flex;
+                justify-content: space-around;
+            }
+            .day-today {
+                color: $blue-text;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .block-right__timenow-div {
+        width: 100%;
+        text-align: center;
+        margin-left: 20px;
+        padding: 0px 15px;
+    }
+
+    .block-right__timenow-title {
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #535459;
+        box-shadow: 0px 0px 1px 1px #ccc;
     }
