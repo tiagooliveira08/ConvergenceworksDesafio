@@ -1,4 +1,4 @@
-.button {
+.btn__button {
   background-color: white;
   border: none;
   color: #535459;
@@ -8,16 +8,18 @@
   width: 150px;
   transition: all 0.5s;
   cursor: pointer;
-  margin-top: 20px !important;
+  margin-top: 20px !important; }
+
+.btn__button--gray {
   border: 1px solid #ccc; }
 
-.button span {
+.btn__button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s; }
 
-.button span:after {
+.btn__button span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -26,10 +28,10 @@
   transition: 0.5s;
   z-index: 1; }
 
-.button:hover span {
+.btn__button:hover span {
   padding-right: 25px; }
 
-.button:hover span:after {
+.btn__button:hover span:after {
   opacity: 1;
   right: 0; }
 

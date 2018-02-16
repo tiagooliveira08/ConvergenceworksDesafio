@@ -1,0 +1,16 @@
+.loader-extern__loading {
+    width: 200px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    margin: auto;
+}
+
+.loader-extern__message {
+    color: $text-color-black-op;
+    font-weight: bold;
+    font-size: 20px;
+}

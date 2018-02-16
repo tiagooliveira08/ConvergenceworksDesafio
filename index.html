@@ -10,87 +10,88 @@
 </head>
 
 <body>
-    <div class="loader-extern__loading">
+    <div class="loader-extern__loading" data-js="loaderExtern">
         <img src="./img/loaderextern.gif" alt="loading" />
         <p class="text-center loader-extern__message">Clima Tempo ConvergenceWorks</p>
     </div>
-    <div class="display__display-all">
-        <nav class="navbar" data-js="navbar">
-            <h1 class="logo">ConvergenceWorks</h1>
-            <div class="display-favorite" data-js="favorite">
+    <div class="display__display-all" data-js="displayAll">
+        <nav class="navbar__header" data-js="navbar">
+            <h1 class="navbar__logo">ConvergenceWorks</h1>
+            <div class="navbar__display-favorite" data-js="favorite">
                 <span class="header__close-favorite" data-js="closeFavorite">
-                    <div class="close__delete close__delete--position"></div>
+                    <div class="u-close__delete u-close__delete--position"></div>
                 </span>
-                <div class="background--infoDiv" data-js="displayFavoriteClick">
-                    <div class="background--image">
+                <div class="navbar__infoDiv" data-js="displayFavoriteClick">
+                    <div class="navbar__infoDiv__image">
                         <img src="img/realistic/70px/1.png" data-js="imageFavorite" />
                     </div>
                     <div class="backgound__favorite">
-                        <span class="background--city" data-js="cityFavorite">Salvador</span>
+                        <span class="navbar__infoDiv__city-name" data-js="cityFavorite">Salvador</span>
                         <div class="flex-row flex-row-center">
-                            <span class="background--cMax" data-js="temperatureFavorite">29º</span>
+                            <span class="navbar__infoDiv__cMax" data-js="temperatureFavorite">29º</span>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
         <div>
-            <img src="img/chuva.png" alt="chuva" class="background--chuva" />
+            <img src="img/chuva.png" alt="chuva" class="background__chuva" />
         </div>
         <div class="background--responsive">
-            <img src="img/sun.png" alt="sun" class="background--sun" />
+            <img src="img/sun.png" alt="sun" class="background__sun" />
         </div>
-        <article class="background">
-            <div class="content">
-                <section class="block-left">
-                    <div class="block-left-top">
-                        <span class="prev-temp text-center">Descubra como está o tempo em sua cidade de uma forma fácil e rápida!!</span>
+        <article class="display__index">
+            <div class="u-center-flex-content">
+                <section class="display__index__block-left">
+                    <div class="display__index__block-left__block-left-top">
+                        <span class="display__index__block-left__block-left-top__text text-center">Descubra como está o tempo em sua cidade de uma forma fácil e rápida!!</span>
                         <p>
                             <div class="arrow-responsive">
-                                <img src="img/down.png" alt="seta para baixo" class="pd10 arrow" data-js="status">
+                                <img src="img/down.png" alt="seta para baixo" class="pd10" data-js="status">
                             </div>
                         </p>
                     </div>
-                    <div class="block-left-bottom">
-                        <input type="text" class="text-search" data-js="textSearch" placeholder="Nome da cidade" tabindex="1" />
-                        <button class="button" data-js="btnSearch" tabindex="2">
+                    <div class="display__index__block-left__block-left-bottom">
+                        <input type="text" class="display__index__block-left__block-left-bottom__search" data-js="textSearch" placeholder="Nome da cidade"
+                            tabindex="1" />
+                        <button class="btn__button btn__button--gray" data-js="btnSearch" tabindex="2">
                             <span>Pesquisar</span>
                         </button>
-                        <div class="loader--loading">
+                        <div class="display__index__block-left__block__loader-loading " data-js="loaderCity">
                         </div>
 
                     </div>
 
-                    <p class="error-message text-center" data-js="errorMessage"></p>
+                    <p class="u-error-message text-center" data-js="errorMessage"></p>
                 </section>
 
-                <div class="flex-column flex-column--right" data-js="blockRight">
-                    <div class="block-right__timenow-div">
-                        <span class="block-right__timenow-title">Tempo no momento</span>
+                <div class="flex-column display__index__flex-column--right" data-js="blockRight">
+                    <div class="u-timenow-div display__index__block-right--u-timenow-title">
+                        <span class="u-timenow-title">Tempo no momento</span>
                     </div>
-                    <section class="block-right">
+                    <section class="display__index__block-right">
                         <span class="close" data-js="close" tabindex="3">
-                            <div class="close__delete"></div>
+                            <div class="u-close__delete"></div>
                         </span>
                         <div class="block-right-top">
                             <div class="flex-row">
-                                <h2 class="prev-locate" data-js="locate">
+                                <h2 class="display__index__block-right__prev-locate" data-js="locate">
                                 </h2>
                                 <div>
-                                    <span class="block-right--tw-heart-box">
+                                    <span class="display__index__block-right__tw-heart-box">
                                         <input type="checkbox" name="name" value="" data-js="checkFavorite">
-                                        <span class="block-right--tw-heart"></span>
+                                        <span class="display__index__block-right__tw-heart"></span>
                                     </span>
                                 </div>
                             </div>
-                            <div class="flex-inline">
+                            <div class="u-flex-inline">
                                 <div class="img-responsive">
                                     <img alt="tempo no momento" data-js="imgTemp">
                                 </div>
 
                                 <div class="flex-column ml20">
-                                    <h3 class="prev-c" data-js="tempC"></h3>
-                                    <span class="description" data-js="description"></span>
+                                    <h3 class="display__index__block-right__prev-c" data-js="tempC"></h3>
+                                    <span class="display__index__block-right__description" data-js="description"></span>
                                 </div>
 
                             </div>
@@ -98,27 +99,33 @@
                         </div>
                         <div class="flex-row flex-row-center mt30">
                             <div class="flex-column ml20">
-                                <span class="block-right__sensation-bold">Sensação</span>
-                                <span class="text-center block-right__sensation-regular" data-js="sensation"></span>
+                                <span class="display__index__block-right__sensation-bold">Sensação</span>
+                                <span class="text-center display__index__block-right__sensation-regular" data-js="sensation"></span>
                             </div>
                             <div class="flex-column ml20">
-                                <span class="block-right__sensation-bold">umidade</span>
-                                <span class="text-center block-right__sensation-regular" data-js="humidity"></span>
+                                <span class="display__index__block-right__sensation-bold">umidade</span>
+                                <span class="text-center display__index__block-right__sensation-regular" data-js="humidity"></span>
                             </div>
                             <div class="flex-column ml20">
-                                <span class="block-right__sensation-bold">Vento</span>
-                                <span class="text-center block-right__sensation-regular" data-js="wind"></span>
+                                <span class="display__index__block-right__sensation-bold">Vento</span>
+                                <span class="text-center display__index__block-right__sensation-regular" data-js="wind"></span>
                             </div>
                     </section>
                     </div>
                 </div>
+
+            </div>
+            <div class="u-timenow-div u-timenow-title--position u-timenow-div--dektop">
+                <span class="u-timenow-title ">Tempo nos proximos 7 Dias</span>
             </div>
         </article>
-    <section class="tip" data-js="tipMain">
-        <div class="block-right__timenow-div block-right__timenow-title--tips">
-            <span class="block-right__timenow-title ">Tempo nos proximos 7 Dias</span>
-        </div>
-    </section>
+        <section class="display__tip" data-js="tipMain">
+            <div class="u-timenow-div u-timenow-title--position-mobile u-timenow-div--mobile">
+                <span class="u-timenow-title ">Tempo nos proximos 7 Dias</span>
+            </div>
+
+
+        </section>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/script.js"></script>

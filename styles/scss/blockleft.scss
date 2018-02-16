@@ -1,0 +1,60 @@
+.display__index__block-left {
+    width: 40%;
+    min-height: $tamanho-prev;
+    height: auto;
+    background-color: rgba(255, 255, 255, 1);
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid rgba(0, 0, 0, .1);
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    box-shadow: $card-shadow;
+    transition: $card-transition;
+    padding: 10px;
+    z-index: 2;
+    
+    
+    
+}
+
+.display__index__block-left__block-left-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: auto;
+    
+}
+.display__index__block-left__block-left-top__text {
+    color: $text-color-black-op;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.display__index__block-left__block-left-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: auto;
+    
+}
+
+
+.display__index__block-left__block-left-bottom__search {
+    padding: 15px;
+    font-size: 16px;
+    color: $text-color-black-op;
+}
+
+.display__index__block-left__block__loader-loading {
+    width: 100%;
+    height: 100%;
+    background: url("../../img/Preloader.gif") no-repeat;
+    width: 90px;
+    height: 90px;
+    display: none;
+    margin-left: 40px;
+}

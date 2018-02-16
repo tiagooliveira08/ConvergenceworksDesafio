@@ -1,0 +1,78 @@
+.u-timenow-div {
+    width: 100%;
+    text-align: center;
+    padding: 0px 15px;
+}
+
+.u-timenow-title {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #535459;
+    box-shadow: 0px 0px 1px 1px #ccc;
+}
+.u-timenow-title--position{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0px;
+    margin-top: -20px;
+}
+.u-timenow-title--position-mobile{
+    margin-top: -20px;
+}
+.u-timenow-div--dektop{
+    display: none;
+}
+.u-timenow-div--mobile{
+    display: none;
+}
+
+.u-error-message {
+    color: rgb(223, 127, 107);
+    margin-top: 10px;
+}
+
+.u-flex-inline {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.u-close__delete--position {
+    margin-top: 7px;
+    width: 10px;
+    height: 10px;
+    &:hover {
+        opacity: .6 !important;
+    }
+}
+
+.u-close__delete {
+    cursor: pointer;
+    float: right;
+    width: 16px;
+    height: 16px;
+    opacity: .6;
+    background-image: url("../../img/delete-bin.png");
+    transition: all .7s ease-in;
+    z-index: 9;
+    &:hover {
+        background-image: url("../../img/delete-bin-red.png");
+        opacity: .6;
+    }
+}
+
+.u-center-flex-content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
