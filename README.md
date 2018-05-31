@@ -2,8 +2,6 @@
 
 ![gif-01.gif](gifs/gif-01.gif)
 
-## Hora do Shoooow!!
-
 
 
 
